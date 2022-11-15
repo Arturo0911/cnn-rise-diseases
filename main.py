@@ -12,20 +12,24 @@ def resizing_images():
         img = Image.open(os.path.join("RiceImages", file))
         new_img = img.resize((64,64))
 
-        new_img.save(f"{new_path}/rice_leave_{position}.png")
+        new_img.save(f"{new_path}/rice_leave.{position}.png")
 
 
 def set_location_images():
-    pass
+    new_name = "rice_leaf_healthy"
+    list_images = os.listdir("NewRiceImages/rice_leaf_healthy/")
 
+    for position, file in enumerate(list_images):
+        img = Image.open(os.path.join("NewRiceImages/rice_leaf_healthy/", file))
+        img.save(f"NewRiceImages/train/rice_leaf_healthy.{position}.png")
 
 def main():
 
-    list_images = os.listdir("NewRiceImages")
-    for x in list_images:
-        img = Image.open(os.path.join("NewRiceImages", x))
-        print(img.shape)
-    
+    #list_images = os.listdir("NewRiceImages")
+    #for x in list_images:
+    #    img = Image.open(os.path.join("NewRiceImages", x))
+    #    print(img.shape)
+    set_location_images()
 
 
 if __name__ == "__main__":
