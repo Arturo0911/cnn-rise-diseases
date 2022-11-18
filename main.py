@@ -4,6 +4,9 @@ from pprint import pprint
 from PIL import Image
 import os
 
+"""
+this is a simple snippet code
+"""
 
 def resizing_images():
     list_images = os.listdir("RiceImages")
