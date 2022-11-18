@@ -8,7 +8,7 @@ import os
 this is a simple snippet code
 """
 
-def resizing_images():
+def resizing_images() -> None:
     list_images = os.listdir("RiceImages")
     new_path = "NewRiceImages"
     for position, file in enumerate(list_images):
@@ -18,13 +18,13 @@ def resizing_images():
         new_img.save(f"{new_path}/rice_leave.{position}.png")
 
 
-def set_location_images():
-    new_name = "rice_leaf_healthy"
-    list_images = os.listdir("NewRiceImages/rice_leaf_healthy/")
+def set_location_images(name_dir: str, iteration_num: int) -> None:
+    new_name = f"rice_leaf_{name_dir}"
+    list_images = os.listdir(f"NewRiceImages/rice_leaf_{name_dir}/")
 
     for position, file in enumerate(list_images):
-        img = Image.open(os.path.join("NewRiceImages/rice_leaf_healthy/", file))
-        img.save(f"NewRiceImages/train/rice_leaf_healthy.{position}.png")
+        img = Image.open(os.path.join(f"NewRiceImages/rice_leaf_{name_dir}/", file))
+        img.save(f"NewRiceImages/train/rice_leaf_{name_dir}.{position}.png")
 
 def main():
 
@@ -32,7 +32,20 @@ def main():
     #for x in list_images:
     #    img = Image.open(os.path.join("NewRiceImages", x))
     #    print(img.shape)
-    set_location_images()
+    # set_location_images()
+
+    try:
+        list_images = os.listdir("yellow")
+        for pos, file in enumerate(list_images):
+            img = Image.open(os.path.join("yellow", file))
+            new_img = img.resize((64,64))
+            new_img.save(f"new_yellow/rive_leaf_yellow.{pos+12}.png")
+    except Exception as e:
+        print(str(e))
+        exit(1)
+    except KeyboardInterrupt:
+        print("Exiting...")
+        exit(0)
 
 
 if __name__ == "__main__":
