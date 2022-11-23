@@ -40,3 +40,17 @@ the filter values, we can perform effects syuch as
 edge detection, sharpening, blurring, etc. That mean
 different filters detect diffeten features., such as 
 edges curves, etc, from the picture
+
+
+
+# Btach Normalization
+
+Also know as "Batch norm" is a method common used to make training
+of artificial neural networks faster and more stable through normalization
+of the layers input's by re-centering and re-scaling.
+
+
+
+
+
+
