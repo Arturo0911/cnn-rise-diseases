@@ -4,8 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-tensorflow = "*"
 pillow = "*"
+tensorflow = "==2.9.2"
 
 [dev-packages]
 

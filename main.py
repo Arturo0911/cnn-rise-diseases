@@ -28,18 +28,51 @@ def set_location_images(name_dir: str, iteration_num: int) -> None:
 
 def main():
 
-    #list_images = os.listdir("NewRiceImages")
-    #for x in list_images:
-    #    img = Image.open(os.path.join("NewRiceImages", x))
-    #    print(img.shape)
-    # set_location_images()
+    
 
     try:
-        list_images = os.listdir("yellow")
-        for pos, file in enumerate(list_images):
-            img = Image.open(os.path.join("yellow", file))
-            new_img = img.resize((64,64))
-            new_img.save(f"new_yellow/rive_leaf_yellow.{pos+12}.png")
+        print("intiializing with the path of the train")
+
+        list_images_train_healthy = os.listdir("NewRiceImages/train/rice_leaf_healthy")
+        list_images_train_yellow = os.listdir("NewRiceImages/train/rice_leaf_yellow")
+
+
+        list_images_test_healthy = os.listdir("NewRiceImages/test/rice_leaf_healthy")
+        list_images_test_yellow = os.listdir("NewRiceImages/test/rice_leaf_yellow")
+
+
+
+        # healthy
+        for pos, file in enumerate(list_images_train_healthy):
+            img = Image.open(os.path.join("NewRiceImages/train/rice_leaf_healthy", file))
+            new_img = img.resize((224,224))
+            new_img.save(f"LastRiceImages/train/rice_leaf_healthy/rice_leaf_healthy.{pos}.png")
+        
+
+        # yellow
+        for pos, file in enumerate(list_images_train_yellow):
+            img = Image.open(os.path.join("NewRiceImages/train/rice_leaf_yellow", file))
+            new_img = img.resize((224,224))
+            new_img.save(f"LastRiceImages/train/rice_leaf_yellow/rice_leaf_yellow.{pos}.png")
+        
+
+        # test healthy
+        for pos, file in enumerate(list_images_test_healthy):
+            img = Image.open(os.path.join("NewRiceImages/test/rice_leaf_healthy", file))
+            new_img = img.resize((224,224))
+            new_img.save(f"LastRiceImages/test/rice_leaf_healthy/rice_leaf_healthy.{pos}.png")
+
+        
+        # test yellow
+        for pos, file in enumerate(list_images_test_yellow):
+            img = Image.open(os.path.join("NewRiceImages/test/rice_leaf_yellow", file))
+            new_img = img.resize((224,224))
+            new_img.save(f"LastRiceImages/test/rice_leaf_yellow/rice_leaf_yellow.{pos}.png")
+        
+
+
+
+        print("intiializing with the path of the test")
     except Exception as e:
         print(str(e))
         exit(1)
